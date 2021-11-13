@@ -1,3 +1,5 @@
+--Объявление всех таблиц БД
+
 --Кварталы
 CREATE TABLE Квартал
 (
@@ -8,9 +10,9 @@ CREATE TABLE Квартал
 --Соседние кварталы
 CREATE TABLE Квартал_Квартал
 (
-    Квартал1_ID INTEGER REFERENCES Квартал ON DELETE CASCADE ON UPDATE CASCADE,
-    Квартал2_ID INTEGER REFERENCES Квартал ON DELETE CASCADE ON UPDATE CASCADE,
-    PRIMARY KEY (Квартал1_ID, Квартал2_ID)
+    ID          SERIAL PRIMARY KEY,
+    Квартал1_ID INTEGER REFERENCES Квартал ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+    Квартал2_ID INTEGER REFERENCES Квартал ON DELETE CASCADE ON UPDATE CASCADE NOT NULL check (Квартал2_ID != Квартал1_ID)
 );
 
 --Улицы
@@ -24,9 +26,9 @@ CREATE TABLE Улица
 --Пересекающиеся улицы
 CREATE TABLE Улица_Улица
 (
-    Улица1_ID INTEGER REFERENCES Улица ON DELETE CASCADE ON UPDATE CASCADE,
-    Улица2_ID INTEGER REFERENCES Улица ON DELETE CASCADE ON UPDATE CASCADE,
-    PRIMARY KEY (Улица1_ID, Улица2_ID)
+    ID        SERIAL PRIMARY KEY,
+    Улица1_ID INTEGER REFERENCES Улица ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+    Улица2_ID INTEGER REFERENCES Улица ON DELETE CASCADE ON UPDATE CASCADE NOT NULL check (Улица1_ID != Улица2_ID)
 );
 
 --Комитет, который принимает здания (после 90% готовности)
@@ -64,8 +66,8 @@ CREATE TABLE Служба_доставки
 --Many To Many
 CREATE TABLE Служба_доставки_Строй_бригада
 (
-    Служба_доставки_ID      INTEGER REFERENCES Служба_доставки ON DELETE CASCADE ON UPDATE CASCADE,
-    Строй_бригада_ID INTEGER REFERENCES Строй_бригада ON DELETE CASCADE ON UPDATE CASCADE,
+    Служба_доставки_ID INTEGER REFERENCES Служба_доставки ON DELETE CASCADE ON UPDATE CASCADE,
+    Строй_бригада_ID   INTEGER REFERENCES Строй_бригада ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (Служба_доставки_ID, Строй_бригада_ID)
 );
 
@@ -120,14 +122,14 @@ CREATE TABLE Здание
     Коэффициент_готовности INTEGER DEFAULT 0 CHECK ( Коэффициент_готовности >= 0 AND Коэффициент_готовности <= 100 ) NOT NULL,
     Улица_ID               INTEGER REFERENCES Улица ON DELETE CASCADE ON UPDATE CASCADE                              NOT NULL,
     Комитет_ID             INTEGER REFERENCES Комитет_сдачи_объектов ON DELETE CASCADE ON UPDATE CASCADE             NOT NULL,
-    Бригада_ID             INTEGER REFERENCES Строй_бригада ON DELETE CASCADE ON UPDATE CASCADE               NOT NULL
+    Бригада_ID             INTEGER REFERENCES Строй_бригада ON DELETE CASCADE ON UPDATE CASCADE                      NOT NULL
 );
 
 --Many To Many
 CREATE TABLE Городская_служба_Здание
 (
-    Служба_ID INTEGER REFERENCES Городская_служба,
-    Здание_ID INTEGER REFERENCES Здание,
+    Служба_ID INTEGER REFERENCES Городская_служба ON DELETE CASCADE ON UPDATE CASCADE,
+    Здание_ID INTEGER REFERENCES Здание ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (Служба_ID, Здание_ID)
 );
 

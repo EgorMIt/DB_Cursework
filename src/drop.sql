@@ -1,34 +1,33 @@
---Удаление таблиц
-drop table "Квартал_Квартал";
+--Удаление всех таблиц БД
 
-drop table "Улица_Улица";
+DROP TABLE "Улица_Улица";
 
-drop table "Служба_доставки_Строй_бригада";
+DROP TABLE "Служба_доставки_Строй_бригада";
 
-drop table "Служба_доставки";
+DROP TABLE "Служба_доставки";
 
-drop table "Обслуживающая_команда";
+DROP TABLE "Обслуживающая_команда";
 
-drop table "Маршрут_Кварталы";
+DROP TABLE "Маршрут_Кварталы";
 
-drop table "Маршрут_Улица";
+DROP TABLE "Маршрут_Улица";
 
-drop table "Маршрут";
+DROP TABLE "Маршрут";
 
-drop table "Городская_служба_Здание";
+DROP TABLE "Городская_служба_Здание";
 
-drop table "Городская_служба";
+DROP TABLE "Городская_служба";
 
-drop table "Стройматериал_Здание";
+DROP TABLE "Стройматериал_Здание";
 
-drop table "Стройматериал";
+DROP TABLE "Стройматериал";
 
-drop table "Здание";
+DROP TABLE "Здание";
 
-drop table "Улица";
+DROP TABLE "Улица";
 
-drop table "Квартал";
+DROP TABLE "Квартал";
 
-drop table "Комитет_сдачи_объектов";
+DROP TABLE "Комитет_сдачи_объектов";
 
-drop table "Строй_бригада";
+DROP TABLE "Строй_бригада";

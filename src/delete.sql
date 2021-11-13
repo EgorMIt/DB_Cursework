@@ -1,18 +1,28 @@
---Отчистка таблиц
-DELETE FROM "Квартал";
+--Отчистка всех таблиц БД
 
-DELETE FROM "Улица";
+DELETE
+FROM "Квартал";
 
-DELETE FROM "Комитет_сдачи_объектов";
+DELETE
+FROM "Улица";
 
-DELETE FROM "Городская_служба";
+DELETE
+FROM "Комитет_сдачи_объектов";
 
-DELETE FROM "Строй_бригада";
+DELETE
+FROM "Городская_служба";
 
-DELETE FROM "Обслуживающая_команда";
+DELETE
+FROM "Строй_бригада";
 
-DELETE FROM "Стройматериал";
+DELETE
+FROM "Обслуживающая_команда";
 
-DELETE FROM "Служба_доставки";
+DELETE
+FROM "Стройматериал";
 
-DELETE FROM "Здание";
+DELETE
+FROM "Служба_доставки";
+
+DELETE
+FROM "Здание";
